@@ -115,6 +115,17 @@ cur_angle = 0
 eps = 0.05
 t1 = 0
 
+
+omega = init_speed / R
+M = m * ballnum
+I = 0
+r = mag(ballcm.pos)/2.5
+for i in balls:
+    I += m * mag(i.obj.pos)**2
+p_rate = M * r * g / (I*omega)
+print(1 / p_rate)
+
+
 ### 執行迴圈
 while True:
     #time.sleep(0.01)
