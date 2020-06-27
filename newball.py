@@ -72,7 +72,7 @@ axis_vector = arrow(pos=vector(0, 0, 0), color=color.yellow, shaftwidth=0.3)
 balls = []
 for i in range(ballnum):
     balls.append(ball(i, vector(0, 0, 0), color.white))
-ballcm = sphere(pos=vector(0, 0, 0), color=color.yellow, radius=0.02, make_trail=True, interval=1, retain=45000)
+ballcm = sphere(pos=vector(0, 0, 0), color=color.yellow, radius=0.02, make_trail=, interval=1, retain=45000)
 L1 = dist(balls[0].obj.pos, vector(0,0,0))
 L2 = dist(balls[0].obj.pos, balls[1].obj.pos)
 
@@ -120,7 +120,8 @@ while True:
     #time.sleep(0.01)
     rate(1 / dt * 0.2)
     t += dt
-
+    if t > 0.01:
+        ballcm.make_trail = True
     for i in range(len(balls)):
         center_spring[i].update(vector(0, 0, 0), balls[i].obj.pos)
     for i in range(len(balls) - 1):
